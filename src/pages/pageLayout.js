@@ -1,17 +1,20 @@
-import { Fragment } from 'react';
+import React, { Fragment } from "react";
+import { Outlet, Link } from "react-router-dom";
 
-const PageLayout = ({ child }) =>
-    <Fragment>
+export default function PageLayout() {
+    const [context, setContext] = React.useState(null);
+
+    return <Fragment>
         <header className="container my-5">
             <div className="row text-center">
-                <h1>D3 Sunburst Cart</h1>
-                <p>
-                    D3 Sunburst chart is a ring chart or radial treemap for displaying
-                    a hierarchical dataset with percentage values in the leaf nodes.
+                <h1>D3 Sunburst Chart</h1>
+                <p className="col-8 offset-2">
+                    {require('./../../package.json')?.description ?? "D3 Sunburst Chart"}
                 </p>
             </div>
         </header>
         <main className="container my-5">
+            <Outlet context={[context, setContext]} />
         </main>
         <footer className="container my-5">
             <div className="row text-center text-muted">
@@ -19,5 +22,5 @@ const PageLayout = ({ child }) =>
             </div>
         </footer>
     </Fragment>
+}
 
-export default PageLayout;

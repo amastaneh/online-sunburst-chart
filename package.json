@@ -1,6 +1,6 @@
 {
   "name": "d3-sunburst-chart",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "repository": "https://github.com/amastaneh/d3-sunburst-chart.git",
   "homepage": "https://github.com/amastaneh/d3-sunburst-chart#readme",
   "description": "D3 Sunburst chart is a customizable sunburst chart as well as the well-known ring chart or radial treemap for showing a hierarchical dataset with percentage values in the leaf nodes.",

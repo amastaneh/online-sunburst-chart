@@ -3,21 +3,19 @@ import * as d3 from "d3";
 
 const D3SunburstChart = ({ config }) => {
     const svgRef = React.useRef(null);
-    const svgWidth = config.width + config.marginLeft + config.marginRight;
-    const svgHeight = config.height + config.marginTop + config.marginBottom;
 
     React.useEffect(() => {
         drawChart()
     }, [config]);
 
-
     const drawChart = () => {
-        const width = config.width
+        if (!config || !svgRef.current) return
+        const width = config.zoom / 100.0 * svgRef.current.offsetWidth
         const radius = width / 6
         const data = JSON.parse(config.json)
-        const partition = (data1) => {
+        const partition = data => {
             const root1 = d3
-                .hierarchy(data1)
+                .hierarchy(data)
                 .sum(d => d.value)
                 .sort((a, b) => b.value - a.value);
             return d3
@@ -35,14 +33,20 @@ const D3SunburstChart = ({ config }) => {
             .padRadius(radius * 1.5)
             .innerRadius(d => d.y0 * radius)
             .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1))
-
         const root = partition(data);
-
         root.each(d => d.current = d);
 
+        // Remove old chart
+        d3.select(svgRef.current)
+            .selectAll("*")
+            .remove()
+
+        // 
         const svg = d3
             .select(svgRef.current)
-            //.create("svg")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", width)
             .attr("viewBox", [0, 0, width, width])
             .style("font", "10px sans-serif");
 
@@ -140,7 +144,7 @@ const D3SunburstChart = ({ config }) => {
         return svg.node();
     }
 
-    return <svg ref={svgRef} width={svgWidth} height={svgHeight} />;
+    return <div className="text-center" ref={svgRef}></div>
 }
 
 export default D3SunburstChart

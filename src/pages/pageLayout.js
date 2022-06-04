@@ -13,9 +13,7 @@ export default function PageLayout() {
                 </p>
             </div>
         </header>
-        <main className="container my-5">
-            <Outlet context={[context, setContext]} />
-        </main>
+        <Outlet context={[context, setContext]} />
         <footer className="container my-5">
             <div className="row text-center text-muted">
                 <small className="mt-5">©{new Date().getFullYear()} - v{require('./../../package.json')?.version ?? 0.0}</small>

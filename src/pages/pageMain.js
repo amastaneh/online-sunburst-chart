@@ -6,7 +6,6 @@ const PageMain = () => {
     const [config, setConfig] = React.useState({
         json: JSON.stringify(sample),
         zoom: 40,
-        margin: 30,
     })
 
     const handleChange = (event) => {
@@ -29,10 +28,6 @@ const PageMain = () => {
                         <div className="form-group mt-3">
                             <label htmlFor="input-radius">Zoom</label>
                             <input type="range" step="5" min="10" max="200" className="form-range" id="zoom" defaultValue={config.zoom} onChange={handleChange} />
-                        </div>
-                        <div className="form-group mt-3">
-                            <label htmlFor="input-radius">Margin</label>
-                            <input type="range" step="5" min="10" max="100" className="form-range" id="margin" defaultValue={config.margin} onChange={handleChange} />
                         </div>
                     </div>
                 </div>

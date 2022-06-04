@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 export default function PageLayout() {
     const [context, setContext] = React.useState(null);

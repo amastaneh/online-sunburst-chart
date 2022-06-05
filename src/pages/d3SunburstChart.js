@@ -10,6 +10,7 @@ const D3SunburstChart = ({ config }) => {
 
     const drawChart = () => {
         if (!config || !svgRef.current) return
+
         const width = config.zoom / 100.0 * svgRef.current.offsetWidth
         const radius = width / 6
         const data = JSON.parse(config.json)
@@ -30,9 +31,10 @@ const D3SunburstChart = ({ config }) => {
             .startAngle(d => d.x0)
             .endAngle(d => d.x1)
             .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
-            .padRadius(radius * 1.5)
+            .padRadius(radius * 2)
             .innerRadius(d => d.y0 * radius)
             .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1))
+
         const root = partition(data);
         root.each(d => d.current = d);
 
@@ -41,15 +43,16 @@ const D3SunburstChart = ({ config }) => {
             .selectAll("*")
             .remove()
 
-        // 
+        // Create Main SVG
         const svg = d3
             .select(svgRef.current)
             .append("svg")
             .attr("width", width)
             .attr("height", width)
             .attr("viewBox", [0, 0, width, width])
-            .style("font", "10px sans-serif");
+            .style("font", config.fontSize + "px sans-serif")
 
+        // Create g
         const g = svg
             .append("g")
             .attr("transform", `translate(${width / 2},${width / 2})`);
@@ -126,6 +129,7 @@ const D3SunburstChart = ({ config }) => {
                 .attr("fill-opacity", d => +labelVisible(d.target))
                 .attrTween("transform", d => () => labelTransform(d.current));
         }
+
 
         function arcVisible(d) {
             return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;

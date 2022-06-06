@@ -25,8 +25,9 @@ const D3SunburstChart = ({ config }) => {
                 .size([2 * Math.PI, root1.height + 1])
                 (root1);
         }
+
         const colorArc = D3HelperColor.getColorByType(config.arcColorSchemeType, data.children.length + 1)
-        const colorValue = D3HelperColor.getColorByType(config.valueColorSchemeType)
+        const colorValue = D3HelperColor.getColorByType(config.valueColorSchemeType, config.maxVisibleLevel)
 
         const format = d3.format(",d")
         const arcVisible = (d) => d.y0 >= 1 && d.x1 > d.x0;

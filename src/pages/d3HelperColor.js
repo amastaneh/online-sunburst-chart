@@ -12,34 +12,40 @@ const getColorByType = (colorSchemeType, value = 0) => {
         case "Set2": return d3.scaleOrdinal(d3.schemeSet2);
         case "Set3": return d3.scaleOrdinal(d3.schemeSet3);
         case "Tableau10": return d3.scaleOrdinal(d3.schemeTableau10);
-        case "BrBG": return d3.scaleOrdinal(d3.schemeBrBG);
-        case "PRGn": return d3.scaleOrdinal(d3.schemePRGn);
-        case "PiYG": return d3.scaleOrdinal(d3.schemePiYG);
-        case "PuOr": return d3.scaleOrdinal(d3.schemePuOr);
-        case "RdBu": return d3.scaleOrdinal(d3.schemeRdBu);
-        case "RdGy": return d3.scaleOrdinal(d3.schemeRdGy);
-        case "RdYlBu": return d3.scaleOrdinal(d3.schemeRdYlBu);
-        case "RdYlGn": return d3.scaleOrdinal(d3.schemeRdYlGn);
-        case "Spectral": return d3.scaleOrdinal(d3.schemeSpectral);
-        case "Blues": return d3.scaleOrdinal(d3.schemeBlues);
-        case "Greens": return d3.scaleOrdinal(d3.schemeGreens);
-        case "Greys": return d3.scaleOrdinal(d3.schemeGreys);
-        case "Oranges": return d3.scaleOrdinal(d3.schemeOranges);
-        case "Purples": return d3.scaleOrdinal(d3.schemePurples);
-        case "Reds": return d3.scaleOrdinal(d3.schemeReds);
-        case "BuGn": return d3.scaleOrdinal(d3.schemeBuGn);
-        case "BuPu": return d3.scaleOrdinal(d3.schemeBuPu);
-        case "GnBu": return d3.scaleOrdinal(d3.schemeGnBu);
-        case "OrRd": return d3.scaleOrdinal(d3.schemeOrRd);
-        case "PuBuGn": return d3.scaleOrdinal(d3.schemePuBuGn);
-        case "PuBu": return d3.scaleOrdinal(d3.schemePuBu);
-        case "PuRd": return d3.scaleOrdinal(d3.schemePuRd);
-        case "RdPu": return d3.scaleOrdinal(d3.schemeRdPu);
-        case "YlGnBu": return d3.scaleOrdinal(d3.schemeYlGnBu);
-        case "YlGn": return d3.scaleOrdinal(d3.schemeYlGn);
-        case "YlOrBr": return d3.scaleOrdinal(d3.schemeYlOrBr);
-        case "YlOrRd": return d3.scaleOrdinal(d3.schemeYlOrRd);
+        case "BrBG": return d3.scaleOrdinal(d3.quantize(d3.interpolateBrBG, value))
+        case "PRGn": return d3.scaleOrdinal(d3.quantize(d3.interpolatePRGn, value))
+        case "PiYG": return d3.scaleOrdinal(d3.quantize(d3.interpolatePiYG, value))
+        case "PuOr": return d3.scaleOrdinal(d3.quantize(d3.interpolatePuOr, value))
+        case "RdBu": return d3.scaleOrdinal(d3.quantize(d3.interpolateRdBu, value))
+        case "RdGy": return d3.scaleOrdinal(d3.quantize(d3.interpolateRdGy, value))
+        case "RdYlBu": return d3.scaleOrdinal(d3.quantize(d3.interpolateRdYlBu, value))
+        case "RdYlGn": return d3.scaleOrdinal(d3.quantize(d3.interpolateRdYlGn, value))
+        case "Spectral": return d3.scaleOrdinal(d3.quantize(d3.interpolateSpectral, value))
+        case "BuGn": return d3.scaleOrdinal(d3.quantize(d3.interpolateBuGn, value))
+        case "BuPu": return d3.scaleOrdinal(d3.quantize(d3.interpolateBuPu, value))
+        case "GnBu": return d3.scaleOrdinal(d3.quantize(d3.interpolateGnBu, value))
+        case "OrRd": return d3.scaleOrdinal(d3.quantize(d3.interpolateOrRd, value))
+        case "PuBuGn": return d3.scaleOrdinal(d3.quantize(d3.interpolatePuBuGn, value))
+        case "PuBu": return d3.scaleOrdinal(d3.quantize(d3.interpolatePuBu, value))
+        case "PuRd": return d3.scaleOrdinal(d3.quantize(d3.interpolatePuRd, value))
+        case "RdPu": return d3.scaleOrdinal(d3.quantize(d3.interpolateRdPu, value))
+        case "YlGnBu": return d3.scaleOrdinal(d3.quantize(d3.interpolateYlGnBu, value))
+        case "YlGn": return d3.scaleOrdinal(d3.quantize(d3.interpolateYlGn, value))
+        case "YlOrBr": return d3.scaleOrdinal(d3.quantize(d3.interpolateYlOrBr, value))
+        case "YlOrRd": return d3.scaleOrdinal(d3.quantize(d3.interpolateYlOrRd, value))
+        case "Blues": return d3.scaleOrdinal(d3.quantize(d3.interpolateBlues, value))
+        case "Greens": return d3.scaleOrdinal(d3.quantize(d3.interpolateGreens, value))
+        case "Greys": return d3.scaleOrdinal(d3.quantize(d3.interpolateGreys, value))
+        case "Purples": return d3.scaleOrdinal(d3.quantize(d3.interpolatePurples, value))
+        case "Reds": return d3.scaleOrdinal(d3.quantize(d3.interpolateReds, value))
+        case "Oranges": return d3.scaleOrdinal(d3.quantize(d3.interpolateOranges, value))
+        case "Cividis": return d3.scaleOrdinal(d3.quantize(d3.interpolateCividis, value))
+        case "CubehelixDefault": return d3.scaleOrdinal(d3.quantize(d3.interpolateCubehelixDefault, value))
         case "Rainbow": return d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, value))
+        case "Sinebow": return d3.scaleOrdinal(d3.quantize(d3.interpolateSinebow, value))
+        case "Turbo": return d3.scaleOrdinal(d3.quantize(d3.interpolateTurbo, value))
+        case "Viridis": return d3.scaleOrdinal(d3.quantize(d3.interpolateViridis, value))
+
         default: return d3.scaleOrdinal(d3.schemeCategory10);
     }
 }
@@ -64,12 +70,6 @@ const getColorNames = [
     "RdYlBu",
     "RdYlGn",
     "Spectral",
-    "Blues",
-    "Greens",
-    "Greys",
-    "Oranges",
-    "Purples",
-    "Reds",
     "BuGn",
     "BuPu",
     "GnBu",
@@ -82,7 +82,18 @@ const getColorNames = [
     "YlGn",
     "YlOrBr",
     "YlOrRd",
+    "Blues",
+    "Greens",
+    "Greys",
+    "Purples",
+    "Reds",
+    "Oranges",
+    "Cividis",
+    "CubehelixDefault",
     "Rainbow",
+    "Sinebow",
+    "Turbo",
+    "Viridis",
 ]
 
 const D3HelperColor = {

@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/d3-sunburst-chart/static/css/main.23ac3eab.css",
-    "main.js": "/d3-sunburst-chart/static/js/main.50a9c3c5.js",
+    "main.js": "/d3-sunburst-chart/static/js/main.816dc1b1.js",
     "index.html": "/d3-sunburst-chart/index.html",
     "main.23ac3eab.css.map": "/d3-sunburst-chart/static/css/main.23ac3eab.css.map",
-    "main.50a9c3c5.js.map": "/d3-sunburst-chart/static/js/main.50a9c3c5.js.map"
+    "main.816dc1b1.js.map": "/d3-sunburst-chart/static/js/main.816dc1b1.js.map"
   },
   "entrypoints": [
     "static/css/main.23ac3eab.css",
-    "static/js/main.50a9c3c5.js"
+    "static/js/main.816dc1b1.js"
   ]
 }

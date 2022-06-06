@@ -1,5 +1,6 @@
 import React from "react";
 import * as d3 from "d3";
+import D3HelperColor from './d3HelperColor';
 
 const D3SunburstChart = ({ config }) => {
     const svgRef = React.useRef(null);
@@ -12,7 +13,7 @@ const D3SunburstChart = ({ config }) => {
         if (!config || !svgRef.current) return
 
         const width = config.zoom / 100.0 * svgRef.current.offsetWidth
-        const radius = width / 6
+        const radius = width / (2 * (config.maxVisibleLevel + 1)) // MaxLevel + 1 (as core) + 1 (as value)
         const data = JSON.parse(config.json)
         const partition = data => {
             const root1 = d3
@@ -24,8 +25,23 @@ const D3SunburstChart = ({ config }) => {
                 .size([2 * Math.PI, root1.height + 1])
                 (root1);
         }
-        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
+        const colorArc = D3HelperColor.getColorByType(config.arcColorSchemeType, data.children.length + 1)
+        const colorValue = D3HelperColor.getColorByType(config.valueColorSchemeType)
+
         const format = d3.format(",d")
+        const arcVisible = (d) => d.y0 >= 1 && d.x1 > d.x0;
+        const labelVisible = (d) => d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.03;
+        const labelTransform = (d) => {
+            const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+            const y = (d.y0 + d.y1) / 2 * radius;
+            return `rotate(${x - 90}) translate(${y}, 0) rotate(${x < 180 ? 0 : 180})`;
+        }
+        const arcTransparency = (d) => {
+            if (d.depth <= 1) return 0.6
+            if (d.depth <= 2) return 0.4
+            return 0.6 / d.depth
+        }
+
         const arc = d3
             .arc()
             .startAngle(d => d.x0)
@@ -33,11 +49,12 @@ const D3SunburstChart = ({ config }) => {
             .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
             .padRadius(radius * 2)
             .innerRadius(d => d.y0 * radius)
-            .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1))
+            .outerRadius(d => d.data.value
+                ? (d.y0 * radius) + (((d.data.value) / config.maxValue) * (Math.max(d.y0 * radius, d.y1 * radius - 1) - (d.y0 * radius)))
+                : Math.max(d.y0 * radius, d.y1 * radius - 1))
 
-        const root = partition(data);
-        root.each(d => d.current = d);
-
+        // START DRAWING
+        // ==========================================
         // Remove old chart
         d3.select(svgRef.current)
             .selectAll("*")
@@ -55,27 +72,42 @@ const D3SunburstChart = ({ config }) => {
         // Create g
         const g = svg
             .append("g")
-            .attr("transform", `translate(${width / 2},${width / 2})`);
+            .attr("transform", `translate(${width / 2}, ${width / 2})`);
 
+        // Create partition
+        // slice(1): Remove root node
+        const root = partition(data);
+        root.each(d => d.current = d);
         const path = g
             .append("g")
             .selectAll("path")
             .data(root.descendants().slice(1))
             .join("path")
-            .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
-            .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
+            .attr("fill", d => {
+                if (d.data.value) {
+                    return colorValue(d.data.value)
+                }
+                else {
+                    while (d.depth > 1) d = d.parent;
+                    return colorArc(d.data.name);
+                }
+            })
+            .attr("fill-opacity", d => arcVisible(d.current) ? arcTransparency(d.current) : 0)
             .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
             .attr("d", d => arc(d.current));
 
+        //Add hyperlink to each arc
         path
             .filter(d => d.children)
             .style("cursor", "pointer")
             .on("click", clicked);
 
+        //Add title to each arc
         path
             .append("title")
             .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
 
+        //Add label to each arc
         const label = g
             .append("g")
             .attr("pointer-events", "none")
@@ -85,19 +117,21 @@ const D3SunburstChart = ({ config }) => {
             .data(root.descendants().slice(1))
             .join("text")
             .attr("dy", "0.35em")
-            .attr("fill-opacity", d => +labelVisible(d.current))
+            .attr("fill-opacity", d => labelVisible(d.current) ? 1 : 0)
             .attr("transform", d => labelTransform(d.current))
             .text(d => d.data.name);
 
+        //Add centeral circle
         const parent = g
             .append("circle")
             .datum(root)
             .attr("r", radius)
             .attr("fill", "none")
+            .attr("cursor", "pointer")
             .attr("pointer-events", "all")
-            .on("click", clicked);
+            .on("click", clicked)
 
-        function clicked(event, p) {
+        function clicked(_event, p) {
             parent.datum(p.parent || root);
 
             root.each(d => d.target = {
@@ -128,21 +162,6 @@ const D3SunburstChart = ({ config }) => {
             }).transition(t)
                 .attr("fill-opacity", d => +labelVisible(d.target))
                 .attrTween("transform", d => () => labelTransform(d.current));
-        }
-
-
-        function arcVisible(d) {
-            return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;
-        }
-
-        function labelVisible(d) {
-            return d.y1 <= 3 && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.03;
-        }
-
-        function labelTransform(d) {
-            const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
-            const y = (d.y0 + d.y1) / 2 * radius;
-            return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
         }
 
         return svg.node();

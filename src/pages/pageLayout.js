@@ -7,11 +7,12 @@ export default function PageLayout() {
     return <Fragment>
         <header className="container my-5">
             <div className="row text-center">
-                <h1>D3 Sunburst Chart</h1>
+                <h1>Online Sunburst Chart</h1>
                 <p className="col-8 offset-2">
-                    {require('./../../package.json')?.description ?? "D3 Sunburst Chart"}
+                    {require('./../../package.json')?.description ?? "Online Sunburst Chart"}
                 </p>
             </div>
+            <a className="github-fork-ribbon" href="https://github.com/amastaneh/online-sunburst-chart" data-ribbon="Fork me on GitHub" title="Fork me on GitHub" alt="Fork Online Sunburst Chart on GitHub">Fork me on GitHub</a>
         </header>
         <Outlet context={[context, setContext]} />
         <footer className="container my-5">

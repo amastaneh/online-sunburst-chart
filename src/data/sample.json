@@ -2,79 +2,47 @@
     "name": "Gamle Furuset",
     "children": [
         {
-            "name": "TEST",
+            "name": "A1",
             "children": [
-                { "name": "Access to information", "children":[{"name":"A", "value":1}]},
-                { "name": "Participation in decision making", "children":[{"name":"A", "value":1}]},
-                { "name": "Formation of represent group", "children":[{"name":"A", "value":1}]},
-                { "name": "Facilities", "children":[{"name":"A", "value":1}]},
-                { "name": "Chances and opportunity", "children":[{"name":"A", "value":1}]},
-                { "name": "Equity and non-discrimination", "children":[{"name":"A", "value":1}]}
-            ]
-        },
-
-        {
-            "name": "Social Equity",
-            "children": [
-                { "name": "Access to information", "value": 6},
-                { "name": "Participation in decision making", "value": 2},
-                { "name": "Formation of represent group", "value": 6},
-                { "name": "Facilities", "value": 6},
-                { "name": "Chances and opportunity", "value": 6},
-                { "name": "Equity and non-discrimination", "value": 1}
+                { "name": "B01", "children":[{"name":"", "value":3}]},
+                { "name": "B02", "children":[{"name":"", "value":2}]},
+                { "name": "B03", "children":[{"name":"", "value":5}]}
             ]
         },
         {
-            "name": "Environmental Awareness",
+            "name": "A2",
             "children": [
-                { "name": "Sustainable Materials", "value": 6},
-                { "name": "Clean and renewable energies", "value": 4},
-                { "name": "Water and waste management", "value": 6},
-                { "name": "Awareness of the physical environment", "value": 6},
-                { "name": "Knowledge of Social events", "value": 4},
-                { "name": "Ability to take action against environmental   problems", "value": 6}
+                { "name": "B04", "children":[{"name":"", "value":6}]},
+                { "name": "B05", "children":[{"name":"", "value":1}]},
+                { "name": "B06", "children":[{"name":"", "value":0}]},
+                { "name": "B07", "children":[{"name":"", "value":2}]}
             ]
         },
         {
-            "name": "Social Cohesion",
+            "name": "A3",
             "children": [
-                { "name": "Indoor and outdoor social gatherings", "value": 6},
-                { "name": "Neighbourhood involvement in design and planning phases", "value": 4},
-                { "name": "Design of a place that increases social interaction", "value": 6},
-                { "name": "Sense of belonging", "value": 1}
+                { "name": "B08", "children":[{"name":"", "value":5}]},
+                { "name": "B09", "children":[{"name":"", "value":2}]},
+                { "name": "B10", "children":[{"name":"", "value":3}]},
+                { "name": "B11", "children":[{"name":"", "value":6}]}
             ]
         },
         {
-            "name": "Health and safety",
+            "name": "A4",
             "children": [
-                { "name": "Feeling of safety", "value": 6},
-                { "name": "Relationship between neighbours", "value": 6},
-                { "name": "Street lighting at night", "value": 6},
-                { "name": "Physical resilience in case of hazards", "value": 6},
-                { "name": "The physical condition of a building", "value": 6},
-                { "name": "Clean environment", "value": 6},
-                { "name": "Noise pollution", "value": 6},
-                { "name": "Ventilation", "value": 6},
-                { "name": "lighting", "value": 6},
-                { "name": "Mental health", "value": 6},
-                { "name": "life satisfaction", "value": 6}
+                { "name": "B12", "children":[{"name":"", "value":5}]},
+                { "name": "B13", "children":[{"name":"", "value":2}]},
+                { "name": "B14", "children":[{"name":"", "value":3}]},
+                { "name": "B15", "children":[{"name":"", "value":6}]}
             ]
         },
         {
-            "name": "Accessibility and satisfaction",
+            "name": "A5",
             "children": [
-                { "name": "Access to public transportation", "value": 6},
-                { "name": "Access to public services", "value": 6},
-                { "name": "Accessibility for disabled", "value": 6}
-            ]
-        },
-        {
-            "name": "Cultural value",
-            "children": [
-                { "name": "Design of building", "value": 6},
-                { "name": "Design of neighbourhood", "value": 6},
-                { "name": "Intercultural dialogue", "value": 6},
-                { "name": "Post-Occupancy Evaluation", "value": 6}
+                { "name": "B16", "children":[{"name":"", "value":5}]},
+                { "name": "B17", "children":[{"name":"", "value":2}]},
+                { "name": "B18", "children":[{"name":"", "value":3}]},
+                { "name": "B19", "children":[{"name":"", "value":6}]}
             ]
         }
     ]

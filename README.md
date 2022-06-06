@@ -1,9 +1,8 @@
-# D3 Sunburst Chart
-D3 Sunburst chart is a customizable sunburst chart as well as the well-known ring chart or radial treemap for showing a hierarchical dataset with percentage values in the leaf nodes.
-
+# Online Sunburst Chart
+Online Sunburst chart is an online, customizable d3 sunburst chart in addition to the well-known ring chart or radial treemap for displaying a hierarchical dataset with quantitative values in the leaf nodes.
 # Live Customizable Sunburst chart
-https://amastaneh.github.io/d3-sunburst-chart/
+https://amastaneh.github.io/online-sunburst-chart/
 
 
 # About
-D3 Sunburst chart provides a customizabke sunburst charts relying on D3.js and React.js
+Online Sunburst chart provides a customizable online chart relying on D3.js and React.js

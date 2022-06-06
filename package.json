@@ -1,8 +1,8 @@
 {
-  "name": "d3-sunburst-chart",
-  "version": "1.0.18",
-  "repository": "https://github.com/amastaneh/d3-sunburst-chart.git",
-  "homepage": "https://github.com/amastaneh/d3-sunburst-chart#readme",
+  "name": "online-sunburst-chart",
+  "version": "1.0.19",
+  "repository": "https://github.com/amastaneh/online-sunburst-chart.git",
+  "homepage": "https://github.com/amastaneh/online-sunburst-chart#readme",
   "description": "Online Sunburst chart is an online, customizable d3 sunburst chart in addition to the well-known ring chart or radial treemap for displaying a hierarchical dataset with quantitative values in the leaf nodes.",
   "author": "Amir Astaneh <amastaneh@gmail.com>",
   "license": "MIT",
@@ -71,6 +71,6 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/amastaneh/d3-sunburst-chart/issues"
+    "url": "https://github.com/amastaneh/online-sunburst-chart/issues"
   }
 }

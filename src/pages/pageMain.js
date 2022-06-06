@@ -76,7 +76,7 @@ const PageMain = () => {
                     </div>
                     <div className="card-body">
                         <div className="form-group mt-3">
-                            <label htmlFor="input-radius">Chart Color Type ({config.arcColorSchemeType}):</label>
+                            <label htmlFor="input-radius">Arc Color Type ({config.arcColorSchemeType}):</label>
                             <select className="form-control" id="arcColorSchemeType" defaultValue={config.arcColorSchemeType} onChange={handleChange}>
                                 {D3HelperColor.getColorNames.map(colorName => <option key={colorName} value={colorName}>{colorName}</option>)}
                             </select>

@@ -4,45 +4,45 @@
         {
             "name": "A1",
             "children": [
-                { "name": "B01", "children":[{"name":"", "value":3}]},
-                { "name": "B02", "children":[{"name":"", "value":2}]},
-                { "name": "B03", "children":[{"name":"", "value":5}]}
+                { "name": "B01", "children":[{"name":"0", "value":0}]},
+                { "name": "B02", "children":[{"name":"1", "value":1}]},
+                { "name": "B03", "children":[{"name":"2", "value":2}]}
             ]
         },
         {
             "name": "A2",
             "children": [
-                { "name": "B04", "children":[{"name":"", "value":6}]},
-                { "name": "B05", "children":[{"name":"", "value":1}]},
-                { "name": "B06", "children":[{"name":"", "value":0}]},
-                { "name": "B07", "children":[{"name":"", "value":2}]}
+                { "name": "B04", "children":[{"name":"3", "value":3}]},
+                { "name": "B05", "children":[{"name":"4", "value":4}]},
+                { "name": "B06", "children":[{"name":"5", "value":5}]},
+                { "name": "B07", "children":[{"name":"6", "value":6}]}
             ]
         },
         {
             "name": "A3",
             "children": [
-                { "name": "B08", "children":[{"name":"", "value":5}]},
-                { "name": "B09", "children":[{"name":"", "value":2}]},
-                { "name": "B10", "children":[{"name":"", "value":3}]},
-                { "name": "B11", "children":[{"name":"", "value":6}]}
+                { "name": "B08", "children":[{"name":"5", "value":5}]},
+                { "name": "B09", "children":[{"name":"2", "value":2}]},
+                { "name": "B10", "children":[{"name":"3", "value":3}]},
+                { "name": "B11", "children":[{"name":"6", "value":6}]}
             ]
         },
         {
             "name": "A4",
             "children": [
-                { "name": "B12", "children":[{"name":"", "value":5}]},
-                { "name": "B13", "children":[{"name":"", "value":2}]},
-                { "name": "B14", "children":[{"name":"", "value":3}]},
-                { "name": "B15", "children":[{"name":"", "value":6}]}
+                { "name": "B12", "children":[{"name":"5", "value":5}]},
+                { "name": "B13", "children":[{"name":"2", "value":2}]},
+                { "name": "B14", "children":[{"name":"3", "value":3}]},
+                { "name": "B15", "children":[{"name":"6", "value":6}]}
             ]
         },
         {
             "name": "A5",
             "children": [
-                { "name": "B16", "children":[{"name":"", "value":5}]},
-                { "name": "B17", "children":[{"name":"", "value":2}]},
-                { "name": "B18", "children":[{"name":"", "value":3}]},
-                { "name": "B19", "children":[{"name":"", "value":6}]}
+                { "name": "B16", "children":[{"name":"5", "value":5}]},
+                { "name": "B17", "children":[{"name":"2", "value":2}]},
+                { "name": "B18", "children":[{"name":"3", "value":3}]},
+                { "name": "B19", "children":[{"name":"6", "value":6}]}
             ]
         }
     ]
